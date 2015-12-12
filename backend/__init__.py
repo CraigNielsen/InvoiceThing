@@ -13,6 +13,9 @@ def create_app():
     def index():
         return "Hello World"
 
+    from backend.api import bp
+    app.register_blueprint(bp, url_prefix='/api')
+
     db.init_app(app)
 
     return app

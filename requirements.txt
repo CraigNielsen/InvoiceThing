@@ -5,4 +5,14 @@ Jinja2==2.8
 MarkupSafe==0.23
 SQLAlchemy==1.0.10
 Werkzeug==0.11.2
+decorator==4.0.6
+ipython==4.0.1
+ipython-genutils==0.1.0
 itsdangerous==0.24
+marshmallow==2.4.2
+path.py==8.1.2
+pexpect==4.0.1
+pickleshare==0.5
+ptyprocess==0.5
+simplegeneric==0.8.1
+traitlets==4.0.0

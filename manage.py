@@ -22,6 +22,12 @@ class CreateAll(Command):
 manager.add_command('create-all', CreateAll())
 
 
+class DropAll(Command):
+    def run(self):
+        db.drop_all()
+manager.add_command('drop-all', DropAll())
+
+
 def _make_context():
     context = dict(
         db=db,
