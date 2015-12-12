@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+			"folder_exclude_patterns": ["__pycache__"],
+			"file_exclude_patterns": ["*.pyc", "*.pyo", ".project"]
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "nose2",
+			"working_dir": "${project_path:${folder}}",
+			"cmd": ["./venv/bin/nose2", "-F"], 
+			"selector": "source.python", 
+		}
+	]
+}
