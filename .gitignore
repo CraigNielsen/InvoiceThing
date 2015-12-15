@@ -58,3 +58,6 @@ target/
 
 # Venv
 venv/
+
+www/node_modules
+www/bower_components
