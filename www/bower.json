@@ -1,0 +1,22 @@
+{
+  "name": "www",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "Jason Russell <jasrusable@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jasrusable/invoice-thing",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8"
+  }
+}
