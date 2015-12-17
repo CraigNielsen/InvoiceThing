@@ -1,6 +1,5 @@
 from flask import current_app
 from flask.ext.script import Manager, Server, Command, Shell
-
 from backend import create_app, db
 from backend import models
 
@@ -12,8 +11,7 @@ class RunServer(Server):
         Server.handle(self, *args, **kwargs)
 manager.add_command(
     'run-server',
-    RunServer(use_debugger=True, use_reloader=True),
-)
+    RunServer(use_debugger=True, use_reloader=True))
 
 
 class CreateAll(Command):
