@@ -15,9 +15,11 @@ class UserSchema(Schema):
 
 class User_(Resource):
 
-    def get(self,userID):
+    def get(self, userID):
         user_schema = UserSchema()
         user = User.query.filter(User.id == userID).one()
         print User
         return user_schema.dump(user).data
+
+
 v1_api.add_resource(User_, '/users/<int:userID>')

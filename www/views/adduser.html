@@ -1,0 +1,41 @@
+  <h1>{{message}}</h1>
+<section class="card login">
+  <form name="myform"
+    ng-submit='addUser()'
+    novalidate>
+
+    <div class="textintro">
+      <h1>Hi there!</h1>
+      <p>Create new persistant users</p>
+      <p>{{user}}</p>
+    </div>
+
+    <fieldset>
+      <input type="name" name="name" placeholder="Name"
+      ng-model="user.name" ng-required="true">
+      <p class="error validationerror" ng-show="myform.name.$invalid && myform.name.$touched">Username is a required field</p>
+      <input type="email" name="email" placeholder="Email"
+      ng-model= "user.email" ng-required="true">
+      <p class= "error validationerror" ng-show="myform.email.$invalid && myform.email.$touched">must be a valid email address</p>
+    </fieldset>
+
+    <button type="submit" class="btn"
+    ng-disabled="myform.$invalid" >Create</button>
+    <p>or <a href="#/register">delete</a></p>
+  </form>
+</section>
+
+<div class="container" ng-controller="appController">
+    <div class="row">
+          <div ng-repeat="user in users">
+            <section class="col-md-4 col-sm-8">
+            <div class="bg-primary">
+            <h3 id="center">{{user.name}}</h3>
+            <p>ID: {{user.id}}</p>
+            <p>email: {{user.email}}</p>
+            </div>
+            </section>
+          </div>
+    </div>
+</div>
+

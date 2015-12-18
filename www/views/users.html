@@ -1,0 +1,15 @@
+<h1>Users</h1>
+    <div class="container" ng-controller="appController">
+        <div class="row">
+              <div ng-repeat="user in users">
+                <section class="col-md-2 col-sm-2">
+                <div class="bg-primary">
+              	<h3 id="cent">{{user.name}}</h3>
+              	<p>ID: {{user.id}}</p>
+                <p>email: {{user.email}}</p>
+                </div>
+                </section>
+              </div>
+        </div>
+    </div>
+
