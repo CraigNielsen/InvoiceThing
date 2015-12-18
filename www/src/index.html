@@ -7,7 +7,7 @@
     	app.controller('appController', function ($scope, $http) {
     		getUsers = $http({
     			method: 'GET',
-    			url: 'http://localhost:5000/api/users'
+    			url: 'http://localhost:5000/api/v1/users'
     		});
 
     		getUsers.then(function (response) {
