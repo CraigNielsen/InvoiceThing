@@ -18,7 +18,6 @@ class User_(Resource):
     def get(self, userID):
         user_schema = UserSchema()
         user = User.query.filter(User.id == userID).one()
-        print User
         return user_schema.dump(user).data
 
 
