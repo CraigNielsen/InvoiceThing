@@ -12,7 +12,6 @@ parser.add_argument('email')
 
 class UserCollection(Resource):
     def get(self):
-        print('asdf')
         user_schema = UserSchema()
         users = User.query.all()
         return user_schema.dump(users, many=True).data
