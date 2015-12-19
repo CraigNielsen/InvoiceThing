@@ -26,6 +26,13 @@ class DropAll(Command):
 manager.add_command('drop-all', DropAll())
 
 
+class InitDB(Command):
+    def run(self):
+        db.drop_all()
+        db.create_all()
+manager.add_command('init-db', InitDB())
+
+
 def _make_context():
     context = dict(
         db=db,
