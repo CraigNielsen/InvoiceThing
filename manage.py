@@ -3,7 +3,10 @@ from flask.ext.script import Manager, Server, Command, Shell
 from backend import create_app, db
 from backend import models
 
-manager = Manager(create_app)
+manager = Manager(
+    create_app,
+    with_default_commands=False,
+)
 
 
 class RunServer(Server):
