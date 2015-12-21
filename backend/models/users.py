@@ -1,10 +1,10 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, String
 
 from backend import db
+from backend.models import Entity
 
 
-class User(db.Model):
-    id = Column(Integer, primary_key=True)
+class User(db.Model, Entity):
     name = Column(String)
     email = Column(String)
 

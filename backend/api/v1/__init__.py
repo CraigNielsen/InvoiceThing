@@ -6,7 +6,6 @@ v1_bp = Blueprint('v1', __name__)
 v1_api = Api(v1_bp)
 
 from .resources import users
-from .resources.users import user
 
 
 @v1_bp.route('/')

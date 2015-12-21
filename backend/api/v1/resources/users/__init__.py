@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 from flask_restful import Resource, reqparse
 from marshmallow import Schema, fields
 import json
 from backend.api.v1 import v1_api
 from backend.models import User
 from backend import db
+from backend.api.v1 import v1_api
+from .user_collection import UserCollection
+from .user_singleton import UserSingleton
+
+
+v1_api.add_resource(UserCollection, '/users')
+v1_api.add_resource(UserSingleton, '/users/<int:user_id>')
 
 
 class UserSchema(Schema):
@@ -48,3 +56,4 @@ class Users_delete(Resource):
         db.session.commit()
         # print json.loads(args.data)
 v1_api.add_resource(Users_delete, '/users/delete')
+

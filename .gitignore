@@ -63,3 +63,6 @@ venv/
 
 www/node_modules
 www/bower_components
+
+# Ignore app.db
+backend/app.db

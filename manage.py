@@ -3,7 +3,10 @@ from flask.ext.script import Manager, Server, Command, Shell
 from backend import create_app, db
 from backend import models
 
-manager = Manager(create_app)
+manager = Manager(
+    create_app,
+    with_default_commands=False,
+)
 
 
 class RunServer(Server):
@@ -24,6 +27,13 @@ class DropAll(Command):
     def run(self):
         db.drop_all()
 manager.add_command('drop-all', DropAll())
+
+
+class InitDB(Command):
+    def run(self):
+        db.drop_all()
+        db.create_all()
+manager.add_command('init-db', InitDB())
 
 
 def _make_context():
