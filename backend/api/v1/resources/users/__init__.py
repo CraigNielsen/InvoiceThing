@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from flask_restful import Resource, reqparse
 from marshmallow import Schema, fields
 import json
