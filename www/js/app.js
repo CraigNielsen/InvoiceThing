@@ -15,6 +15,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
       controller: 'SuccessController'
     }).
     otherwise({
-      redirectTo: '/users'
+      redirectTo: '/adduser'
     });
 }]);

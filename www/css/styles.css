@@ -643,3 +643,8 @@ input.ng-valid.ng-touched {
   color: red;
   padding-bottom: 10px;
 }
+.selected {
+  background-color: #EFD468;
+  color: #371FBD;
+  font-size: 1em;
+}
