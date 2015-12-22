@@ -8,6 +8,7 @@ var uglify = require('gulp-uglify');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var del = require('del');
+var debug = require('gulp-debug');
 
 
 gulp.task('clean', function (cb) {
@@ -27,7 +28,7 @@ gulp.task('bower', [], function () {
             suffix: ".min"
         }))
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('./dist'))
+        .pipe(gulp.dest('./dist/'))
         .pipe(jsFilter.restore)
         .pipe(lessFilter)
         .pipe(less())
@@ -39,14 +40,31 @@ gulp.task('bower', [], function () {
             suffix: ".min"
         }))
         .pipe(sourcemaps.write('./maps'))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('partials', function () {
+    return gulp.src('./src/**/*.html')
+        .pipe(gulp.dest('./dist/views/'));
 });
 
 gulp.task('index', function () {
     return gulp.src('./src/index.html')
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('styles', function () {
+    return gulp.src('./src/**/*.css')
+        .pipe(concat('styles.css'))
+        .pipe(gulp.dest('./dist/'));
+})
+
+gulp.task('scripts', function () {
+    return gulp.src('./src/**/*.js')
+        .pipe(concat('src.js'))
+        .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('default', ['clean'], function () {
-	gulp.start('bower', 'index');
+	gulp.start('bower', 'index', 'scripts', 'styles', 'partials');
 });
