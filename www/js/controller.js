@@ -2,16 +2,18 @@
 myApp.controller('appController', function ($scope, $http,$location) {
 	$scope.message="Invoice Pal";
 
+	updateUsers = function () {
+		getUsers = $http({
+			method: 'GET',
+			url: 'http://localhost:5000/api/v1/users'
+		});
 
-	getUsers = $http({
-		method: 'GET',
-		url: 'http://localhost:5000/api/v1/users'
-	});
-
-	getUsers.then(function (response) {
-		$scope.users = response.data;
-	});
-
+		getUsers.then(function (response) {
+			$scope.users = response.data;
+		});
+	
+	}
+	updateUsers();
 	changeView = function(view){
             $location.path(view); // path not hash
         }
@@ -23,22 +25,21 @@ myApp.controller('appController', function ($scope, $http,$location) {
 		}else{
 			idSelectedUser[id]=id;
 		}
-		// console.log("clicked a user");
-   		// $scope.idSelectedVote = id;
+
 };
 	$scope.checkSelected = function (id) {
 		if (id in idSelectedUser){
-			console.log( id + " is selected");
+			// console.log( id + " is selected");
 			return true;
 
 		}else {
-			console.log("not selected");
+			// console.log("not selected");
 			return false;
 		}
 	}
 	$scope.addUser = function (){
 
-		$scope.message="this has been run"
+
 		postuser= $http({
 			method: 'POST',
 			url: 'http://localhost:5000/api/v1/users',
@@ -46,13 +47,13 @@ myApp.controller('appController', function ($scope, $http,$location) {
 			});
 
 		postuser.then(function (response) {
-			console.log(response);
-			changeView('/adduser');
+			// console.log(response);
+			updateUsers();
 		});
 
 	};
 		$scope.deleteSelected= function (){
-		console.log(JSON.stringify(idSelectedUser));
+		// console.log(JSON.stringify(idSelectedUser));
 		deluser= $http({
 			method: 'POST',
 			url: 'http://localhost:5000/api/v1/users/delete',
@@ -60,9 +61,9 @@ myApp.controller('appController', function ($scope, $http,$location) {
 			});
 
 		deluser.then(function (response) {
-			console.log("deleted");
+			// console.log("deleted");
 			idSelectedUser={}	;
-			changeView('/adduser');
+			updateUsers();
 		});
 
 	};
