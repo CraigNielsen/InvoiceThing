@@ -9,6 +9,7 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var del = require('del');
 var debug = require('gulp-debug');
+var templateCache = require('gulp-angular-templatecache');
 
 
 gulp.task('clean', function (cb) {
@@ -45,7 +46,8 @@ gulp.task('bower', [], function () {
 
 gulp.task('partials', function () {
     return gulp.src('./src/**/*.html')
-        .pipe(gulp.dest('./dist/views/'));
+        .pipe(templateCache({module: 'myApp'}))
+        .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('index', function () {
