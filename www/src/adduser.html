@@ -1,13 +1,11 @@
-  <h1>{{message}}</h1>
 <section class="card login">
   <form name="myform"
     ng-submit='addUser()'
     novalidate>
 
     <div class="textintro">
-      <h1>Hi there!</h1>
-      <p>Create new persistant users</p>
-      <p>{{user}}</p>
+      <h1>Edit Users</h1>
+      <p>Add users below, or select Users to delete</p>
     </div>
 
     <fieldset>
@@ -25,18 +23,16 @@
     <p >or <a ng-click="deleteSelected()">delete</a></p>
   </form>
 </section>
-
 <div class="container" ng-controller="appController">
     <div class="row">
-          <div ng-repeat="user in users" ng-click="setSelected(user.id)">
-            <section class="col-md-4 col-sm-6">
-            <div class="bg-primary" ng-class="{'selected': checkSelected(user.id)}"  >
-
-            <h3 id="center">{{user.name}}</h3>
-            <p>ID: {{user.id}}</p>
-            <p>email: {{user.email}}</p>
-            </div>
-            </section>
+          <div ng-repeat="user in users" ng-click="setSelected(user.id)" >
+              <section class="col-md-4 col-sm-6">
+                  <div class="bg-primary breath" ng-class="{'selected': checkSelected(user.id)}"  >
+                      <h3 id="center">{{user.name}}</h3>
+                      <p>ID: {{user.id}}</p>
+                      <p>email: {{user.email}}</p>
+                  </div>
+              </section>
           </div>
     </div>
 </div>

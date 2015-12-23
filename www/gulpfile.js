@@ -11,6 +11,8 @@ var del = require('del');
 var debug = require('gulp-debug');
 var templateCache = require('gulp-angular-templatecache');
 var livereload = require('gulp-livereload');
+var watch = require('gulp-watch');
+var batch = require('gulp-batch');
 
 gulp.task('clean', function (cb) {
     return del(['./dist/*'], cb);

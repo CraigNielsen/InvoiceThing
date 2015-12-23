@@ -643,8 +643,24 @@ input.ng-valid.ng-touched {
   color: red;
   padding-bottom: 10px;
 }
-.selected {
-  background-color: #EFD468;
-  color: #371FBD;
+
+.bg-primary {
+   border-radius: 10px; 
+  padding: 5px 10px 0px 10px ;
   font-size: 1em;
+}
+.selected {
+  background-color: #FFCA2A;
+  color: #1E00B5;
+  font-size: 1em;
+}
+.breath {
+    margin: 2px 2px ;
+}
+.center {
+
+text-align: center;
+list-style: none; 
+/*    border: 3px solid #73AD21;*/
+ display: inline; 
 }

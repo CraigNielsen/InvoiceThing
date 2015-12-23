@@ -1,15 +1,15 @@
 <h1>Users</h1>
     <div class="container" ng-controller="appController">
         <div class="row">
-              <div ng-repeat="user in users">
-                <section class="col-md-4 col-sm-6">
-                <div class="bg-primary">
-              	<h3 id="cent">{{user.name}}</h3>
-              	<p>ID: {{user.id}}</p>
-                <p>email: {{user.email}}</p>
-                </div>
-                </section>
-              </div>
+          <div ng-repeat="user in users" ng-click="setSelected(user.id)" >
+              <section class="col-md-4 col-sm-6">
+                  <div class="bg-primary breath" ng-class="{'selected': checkSelected(user.id)}"  >
+                      <h3 id="center">{{user.name}}</h3>
+                      <p>ID: {{user.id}}</p>
+                      <p>email: {{user.email}}</p>
+                  </div>
+              </section>
+         </div>
         </div>
     </div>
 
