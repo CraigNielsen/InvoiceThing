@@ -23,9 +23,19 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "adduser.html",
       controller: "appController"
     })
-    .state('state1.signin', {
-      url: "/signin",
+    .state('state1.login', {
+      url: "/login",
       templateUrl: "login.html",
+      controller: "loginController"
+    })
+    .state('state1.signup', {
+      url: "/login",
+      templateUrl: "signup.html",
+      controller: "loginController"
+    })
+    .state('state1.login.signup', {
+      url: "/signup",
+      templateUrl: "signup.html",
       controller: "loginController"
     })
 });
