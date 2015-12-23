@@ -80,7 +80,7 @@ gulp.task('watch', function () {
     watch('./src/**/*.html', batch(function (events, done) {
         gulp.start('partials', done);
     }));
-    watch('./src/**/*.coffee', batch(function (events, done) {
+    watch('./src/**/*.js', batch(function (events, done) {
         gulp.start('scripts', done);
     }));
     watch('./src/**/*.css', batch(function (events, done) {

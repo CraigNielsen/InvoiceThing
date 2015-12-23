@@ -23,11 +23,9 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: "adduser.html",
       controller: "appController"
     })
-    .state('state2.list', {
-      url: "/list",
-      templateUrl: "partials/state2.list.html",
-      controller: function($scope) {
-        $scope.things = ["A", "Set", "Of", "Things"];
-      }
-    });
+    .state('state1.signin', {
+      url: "/signin",
+      templateUrl: "login.html",
+      controller: "loginController"
+    })
 });
