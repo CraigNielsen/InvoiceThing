@@ -1,20 +1,33 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ui.router']);
 
-myApp.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-    when('/users', {
-      templateUrl: 'users.html',
-      controller: 'appController'
-    }).
-    when('/adduser', {
-      templateUrl: 'adduser.html',
-      controller: 'appController'
-    }).
-    when('/success', {
-      templateUrl: 'success.html',
-      controller: 'SuccessController'
-    }).
-    otherwise({
-      redirectTo: '/adduser'
+myApp.config(function($stateProvider, $urlRouterProvider) {
+  //
+  // For any unmatched url, redirect to /state1
+  $urlRouterProvider.otherwise("/state1");
+  //
+  // Now set up the states
+  $stateProvider
+    .state('state1', {
+      url: "/state1",
+      templateUrl: "navbar.html"
+    })
+    .state('state1.users', {
+      url: "/users",
+      templateUrl: "users.html",
+      controller: function($scope) {
+        $scope.items = ["A", "List", "Of", "Items"];
+      }
+    })
+    .state('state1.addusers', {
+      url: "/addusers",
+      templateUrl: "adduser.html",
+      controller: "appController"
+    })
+    .state('state2.list', {
+      url: "/list",
+      templateUrl: "partials/state2.list.html",
+      controller: function($scope) {
+        $scope.things = ["A", "Set", "Of", "Things"];
+      }
     });
-}]);
+});

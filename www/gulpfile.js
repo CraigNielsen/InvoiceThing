@@ -10,7 +10,7 @@ var rename = require('gulp-rename');
 var del = require('del');
 var debug = require('gulp-debug');
 var templateCache = require('gulp-angular-templatecache');
-
+var livereload = require('gulp-livereload');
 
 gulp.task('clean', function (cb) {
     return del(['./dist/*'], cb);
@@ -70,3 +70,26 @@ gulp.task('scripts', function () {
 gulp.task('default', ['clean'], function () {
 	gulp.start('bower', 'index', 'scripts', 'styles', 'partials');
 });
+
+gulp.task('watch', function () {
+    watch('./bower_components/**', batch(function (events, done) {
+        gulp.start('bower', done);
+    }));
+    watch('./src/**/*.html', batch(function (events, done) {
+        gulp.start('partials', done);
+    }));
+    watch('./src/**/*.coffee', batch(function (events, done) {
+        gulp.start('scripts', done);
+    }));
+    watch('./src/**/*.css', batch(function (events, done) {
+        gulp.start('styles', done);
+    }));
+    watch('./src/app/assets/**', batch(function (events, done) {
+        gulp.start('assets', done);
+    }));
+    watch('./src/index.html', batch(function (events, done) {
+        gulp.start('index', done);
+    }));
+    livereload.listen();
+    gulp.watch('./dist/**').on('change', livereload.changed);
+})
