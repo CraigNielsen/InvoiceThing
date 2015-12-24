@@ -4,6 +4,11 @@ from .user_singleton import UserSingleton
 from .user_delete import Users_delete
 
 
-v1_api.add_resource(UserCollection, '/users')
-v1_api.add_resource(UserSingleton, '/users/<int:user_id>')
-v1_api.add_resource(Users_delete, '/users/delete')
+v1_api.add_resource(UserCollection,
+                    '/users')
+
+v1_api.add_resource(UserSingleton,
+                    '/users/<int:user_id>')
+
+v1_api.add_resource(Users_delete,
+                    '/users/delete')
