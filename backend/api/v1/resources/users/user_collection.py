@@ -20,8 +20,8 @@ class UserCollection(Resource):
     def post(self):
         args = parser.parse_args()
         user = User()
-        for key in args.items():
-            setattr(user, key, args[key])
+        for key, value in args.items():
+            setattr(user, key, value)
         db.session.add(user)
         db.session.commit()
         return user_schema.dump(user).data
