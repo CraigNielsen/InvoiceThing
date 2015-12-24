@@ -19,35 +19,30 @@ myApp.controller('appController', function ($scope, $http, $location) {
 
 	$scope.checkSelected = function (id) {
 		if (id in idSelectedUser){
-			// console.log( id + " is selected");
 			return true;
 		} else {
-			// console.log("not selected");
 			return false;
 		}
 	}
 
 	$scope.addUser = function (){
-		postuser = $http({
+		createUser = $http({
 			method: 'POST',
 			url: 'http://localhost:5000/api/v1/users',
 			data:$scope.user
 		});
-		postuser.then(function (response) {
-			// console.log(response);
+		createUser.then(function (response) {
 			updateUsers();
 		});
 	};
 	
 	$scope.deleteSelected= function (){
-		// console.log(JSON.stringify(idSelectedUser));
-		deluser = $http({
+		deleteUser = $http({
 			method: 'POST',
 			url: 'http://localhost:5000/api/v1/users/delete',
 			data:{'data': JSON.stringify(idSelectedUser) } 
 		});
-		deluser.then(function (response) {
-			// console.log("deleted");
+		deleteUser.then(function (response) {
 			idSelectedUser = {};
 			updateUsers();
 		});
