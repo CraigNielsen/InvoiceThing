@@ -8,10 +8,6 @@ myApp.controller('appController', function ($scope, $http, $location) {
 			$scope.users = response.data;
 		});
 	};
-	
-	changeView = function(view){
-            $location.path(view); // path not hash
-    };
     
 	$scope.setSelected = function (id) {
 		if (id in idSelectedUser){
