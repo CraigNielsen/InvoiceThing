@@ -47,6 +47,7 @@ myApp.controller('appController', function ($scope, $http, $location) {
 			updateUsers();
 		});
 	};
+
 	$scope.message="Invoice Pal";
 	updateUsers();
 	console.log("adding some spice");
