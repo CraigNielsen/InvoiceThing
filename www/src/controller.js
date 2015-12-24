@@ -1,4 +1,4 @@
-myApp.controller('appController', function ($scope, $http, $location) {
+myApp.controller('appController', function ($scope, $http, $location, $q) {
 	updateUsers = function () {
 		getUsers = $http({
 			method: 'GET',
@@ -36,16 +36,20 @@ myApp.controller('appController', function ($scope, $http, $location) {
 		});
 	};
 	
-	$scope.deleteSelected= function (){
-		deleteUser = $http({
-			method: 'POST',
-			url: 'http://localhost:5000/api/v1/users/delete',
-			data:{'data': JSON.stringify(idSelectedUser) } 
-		});
-		deleteUser.then(function (response) {
-			idSelectedUser = {};
+	$scope.deleteSelected= function () {
+		var promises = [];
+		for (var key in idSelectedUser) {
+			promises.push(
+				$http({
+					method: 'DELETE',
+					url: 'http://localhost:5000/api/v1/users/' + key,
+				})
+			)
+		}
+		p = $q.all(promises);
+		p.then(function () {
 			updateUsers();
-		});
+		})
 	};
 
 	$scope.message="Invoice Pal";
